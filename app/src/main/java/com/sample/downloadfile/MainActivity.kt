@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         btn.setOnClickListener{
             if(isWriteStoragePermissionGranted() && isReadStoragePermissionGranted()){
                 //create file
-                File(Environment.getExternalStorageDirectory(),"sample.txt")
+              val file =   File(Environment.getExternalStorageDirectory(),"sample.txt")
+                if(!file.exists()){
+                    file.createNewFile()
+                }
 
                 if(isEncrypt){
                     encryptFile(File(Environment.getExternalStorageDirectory(),"sample.txt"),
